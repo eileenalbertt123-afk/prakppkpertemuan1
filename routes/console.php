@@ -3,6 +3,14 @@
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+Route::get('/lists', [TaskListController::class, 'index'])
+    ->name('lists.index');
+
+Route::post('/lists', [TaskListController::class, 'store'])
+    ->name('lists.store');
+
+Route::put('/lists/{list}', [TaskListController::class, 'update'])
+    ->name('lists.update');
+
+Route::delete('/lists/{list}', [TaskListController::class, 'destroy'])
+    ->name('lists.destroy');
